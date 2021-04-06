@@ -11,7 +11,7 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
     @Override
     public int addFood(Food food ,SUser sUser) {
 
-        String sql = "insert ignore food(`name`,`price`,`sid`,`sales`,`stock`,`imgpath` imgPath,`suid`)values(?,?,?,?,?,?,?)";
+        String sql = "insert ignore into food(name,price,sid,sales,stock,imgpath imgPath,suid)values(?,?,?,?,?,?,?)";
 
         return update(sql,food.getName(),food.getPrice(),sUser.getPusername(),food.getSales(),food.getStock(),food.getImgPath(),sUser.getId());
     }
