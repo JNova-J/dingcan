@@ -11,9 +11,9 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
     @Override
     public int addFood(Food food ,SUser sUser) {
 
-        String sql = "insert into food(`name`,`price`,`sid`,`sales`,`stock`,`suid`)values(?,?,?,?,?,?)";
+        String sql = "insert ignore food(`name`,`price`,`sid`,`sales`,`stock`,`imgpath` imgPath,`suid`)values(?,?,?,?,?,?,?)";
 
-        return update(sql,food.getName(),food.getPrice(),sUser.getPusername(),food.getSales(),food.getStock(),sUser.getId());
+        return update(sql,food.getName(),food.getPrice(),sUser.getPusername(),food.getSales(),food.getStock(),food.getImgPath(),sUser.getId());
     }
 
     @Override
@@ -24,8 +24,8 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
 
     @Override
     public int updateFood(Food food) {
-        String sql="update food set `name`=?,`price`=?,`sid`=?,`sales`=?,`stock`=?,`suid`=? where id=?";
-        return update(sql,food.getName(),food.getPrice(),food.getSid(),food.getSales(),food.getStock(),food.getSuid(),food.getId());
+        String sql="update food set `name`=?,`price`=?,`sid`=?,`sales`=?,`stock`=?,`imgpath` imgPath=?,`suid`=? where id=?";
+        return update(sql,food.getName(),food.getPrice(),food.getSid(),food.getSales(),food.getStock(),food.getImgPath(),food.getSuid(),food.getId());
     }
 
     @Override
