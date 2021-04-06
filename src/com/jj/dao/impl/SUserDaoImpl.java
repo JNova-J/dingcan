@@ -15,7 +15,7 @@ public class SUserDaoImpl extends BaseBao implements SUserDao {
     @Override
     public SUser queryUserByUsernameAndPassword(String susername,String password) {
 
-        String sql = "select `id`,`username`,`password`,`pusername`,`email`,`address`,`phone`,`role` from s_user where username=? and password=? and role=1";
+        String sql = "select `id`,`username`,`password`,`pusername`,`email`,`address`,`phone`,`role` from s_user where username=? and password=?";
         return queryOne(SUser.class,sql,susername,password);
     }
 

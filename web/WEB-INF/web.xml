@@ -111,5 +111,16 @@
         <url-pattern>/*</url-pattern>
         <url-pattern>/manager/foodServlet</url-pattern>
     </filter-mapping>
+    <!-- 服务器出错之后，自动跳转的页面-->
+    <error-page>
+        <!-- 错误类型-->
+        <error-code>500</error-code>
+        <!-- 要跳转去的页面路径-->
+        <location>/pages/error/error500.jsp</location>
+    </error-page>
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages/error/error404.jsp</location>
+    </error-page>
 </web-app>

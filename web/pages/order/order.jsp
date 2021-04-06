@@ -47,6 +47,7 @@
 			<td>状态</td>
 			<td>详情</td>
 		</tr>
+		<c:if test="${not empty requestScope.myOrders}">
 		<c:forEach items="${requestScope.myOrders}" var="order">
 			<tr>
 				<td>${order.createTime}</td>
@@ -65,7 +66,12 @@
 				<td><a href="orderServlet?action=showOrderDetail&orderId=${order.orderId}">查看详情</a></td>
 			</tr>
 		</c:forEach>
-
+		</c:if>
+<c:if test="${empty requestScope.myOrders}">
+	<tr>
+		<td colspan="4"><a href="index.jsp">当前没有订单信息，过去首页进行下单吧！</a></td>
+	</tr>
+</c:if>
 
 	</table>
 

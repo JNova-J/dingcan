@@ -48,7 +48,10 @@
             <a href="userServlet?action=logout">注销</a>&nbsp;&nbsp;
         </c:if>
         <a href="../../pages/cart/cart.jsp">购物车</a>
-        <a href="../../pages/manager/manager.jsp">后台管理</a>
+            <c:if test="${sessionScope.suser.role==1}">
+                <a href="../../pages/manager/manager.jsp">后台管理</a>
+            </c:if>
+
     </div>
 </div>
 <div id="main">

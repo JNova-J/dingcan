@@ -14,7 +14,7 @@ public class OrderDaoImpl extends BaseBao implements OrderDao {
 
     @Override
     public List<Order> queryOrder() {
-        String sql = "select `orderId`,`createTime`,`price`,`status`,`userId`,`useraddress` address from f_order";
+        String sql = "select `orderId`,`createTime`,`price`,`status`,`userId`,`useraddress` address from f_order " ;
         return queryList(Order.class, sql);
     }
 

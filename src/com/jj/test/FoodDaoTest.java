@@ -27,7 +27,7 @@ public class FoodDaoTest {
 
     @Test
     public void updateFood() {
-        foodDao.updateFood(new Food(27,"北京烤鸭2","空气炸鸡",new BigDecimal(198),98,82,"static/img/11.jpg",3));
+        foodDao.updateFood(new Food(41,"北京烤鸭2","空气炸鸡",new BigDecimal(198),98,82,null,3));
     }
 
     @Test

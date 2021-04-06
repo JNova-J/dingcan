@@ -26,7 +26,7 @@ public class  UserServlet extends BaseServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         // 调用 userService.login()登录处理业务
-        SUser loginUser = suserService.login(new SUser(null,username,password,null,null,null,null,0));
+        SUser loginUser = suserService.login(new SUser(null,username,password,null,null,null,null,null));
         // 如果等于 null,说明登录 失败!
         if (loginUser == null) {
             // 把错误的信息，和回显的表单项信息，保存到 Request 域中
@@ -34,7 +34,8 @@ public class  UserServlet extends BaseServlet {
             req.setAttribute("username", username);
             // 跳回登录页面
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
-        } else {
+        }
+        else {
             // 登录 成功
             // 保存用户登陆后的信息到 Session 域中
             req.getSession().setAttribute("suser", loginUser);
@@ -79,27 +80,7 @@ public class  UserServlet extends BaseServlet {
 
     }
 
-    /**
-     *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
-     */
-    /*
-    protected void ajaxExistsUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取请求的参数
-        String username = req.getParameter("username");
-        //调用 userService.existsUsername()
-        boolean existsUsername = userService.existsUsername(username);
-        //把返回的结果封装成为 Map 对象
-        Map<String, Object> resultMap = new HashMap<>();
-        resultMap.put("existsUsername",existsUsername);
-        Gson gson = new Gson();
-        String json = gson.toJson(resultMap);
-        resp.getWriter().write(json);
-    }
-    */
+
     /**
      * 注销用户
      * @param req

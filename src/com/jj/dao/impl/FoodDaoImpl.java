@@ -11,9 +11,9 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
     @Override
     public int addFood(Food food ,SUser sUser) {
 
-        String sql = "insert into food(`name`,`price`,`sid`,`sales`,`stock`,`imgpath` imgPath,`suid`)values(?,?,?,?,?,?,?)";
+        String sql = "insert into food(`name`,`price`,`sid`,`sales`,`stock`,`suid`)values(?,?,?,?,?,?)";
 
-        return update(sql,food.getName(),food.getPrice(),sUser.getPusername(),food.getSales(),food.getStock(),food.getImgPath(),sUser.getId());
+        return update(sql,food.getName(),food.getPrice(),sUser.getPusername(),food.getSales(),food.getStock(),sUser.getId());
     }
 
     @Override
@@ -24,8 +24,8 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
 
     @Override
     public int updateFood(Food food) {
-        String sql="update food set `name`=?,`price`=?,`sid`=?,`sales`=?,`stock`=?,`imgpath` imgPath =?,`suid`=? where id=?";
-        return update(sql,food.getName(),food.getPrice(),food.getSid(),food.getSales(),food.getStock(),food.getImgPath(),food.getSuid(),food.getId());
+        String sql="update food set `name`=?,`price`=?,`sid`=?,`sales`=?,`stock`=?,`suid`=? where id=?";
+        return update(sql,food.getName(),food.getPrice(),food.getSid(),food.getSales(),food.getStock(),food.getSuid(),food.getId());
     }
 
     @Override
@@ -63,7 +63,11 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
     public Integer queryForPageTotalCount2(Integer suid) {
         String sql = "select `suid`, count(1) as counts from food where `suid`=? ";
         Number count = (Number) queryForSingleValue(sql,suid);
-        return count.intValue();
+        if (count==null) {
+            return 0;
+        } else {
+            return count.intValue();
+        }
     }
 
     @Override
@@ -83,7 +87,11 @@ public class FoodDaoImpl extends BaseBao implements FoodDao {
     public Integer queryForPageTotalCountByPrice(int min, int max) {
         String sql = "select count(*) from food where price between ? and ?";
         Number count = (Number) queryForSingleValue(sql,min,max);
-        return count.intValue();
+        if (count==null){
+            return null;
+        }else {
+            return count.intValue();
+        }
     }
 
     @Override

@@ -20,7 +20,7 @@
 </head>
 <body>
 <div id="header">
-	<img class="logo_img" alt="" src="../../static/img/login1.jpg" >
+	<img class="logo_img" alt="" src="../../static/img/login1.jpg"  height="90px" width="90px">
 
 	<%-- 静态包含，登陆成功后的菜单 --%>
 	<%@include file="/pages/common/login_success_menu.jsp"%>

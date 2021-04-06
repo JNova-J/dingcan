@@ -14,10 +14,6 @@ import static org.junit.Assert.*;
 public class FoodServiceImplTest {
     private FoodService foodService =new FoodServiceImpl();
 
-    //@Test
-    //public void addFood() {
-    //    foodService.addFood(new Food(null,"松花鱼",new BigDecimal(72),99,0,null),new SUser("yuex",3));
-    //}
 
     @Test
     public void deleteFoodById() {
@@ -27,12 +23,12 @@ public class FoodServiceImplTest {
 
     @Test
     public void updateFood() {
-        foodService.updateFood(new Food(5,"五谷丰登八宝鸭","本帮菜馆",new BigDecimal(288),99,0,null,5));
+        foodService.updateFood(new Food(29,"五谷丰登八宝鸭","本帮菜馆",new BigDecimal(288),99,0,null,3));
     }
 
     @Test
     public void queryFoodById() {
-        System.out.println(foodService.queryFoodById(5));
+        System.out.println(foodService.queryFoodById(3));
     }
 
     @Test

@@ -49,7 +49,7 @@ public class OrderServlet extends BaseServlet{
         }
         Integer userId = loginUser.getId();
         List<Order> myOrders = orderService.showMyOrders(userId);
-        System.out.println(myOrders.get(0).getCreateTime());
+//        System.out.println(myOrders.get(0).getCreateTime());
         request.setAttribute("myOrders", myOrders);
         request.getRequestDispatcher("/pages/order/order.jsp").forward(request, response);
     }
@@ -119,4 +119,5 @@ public class OrderServlet extends BaseServlet{
         request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
+
 }

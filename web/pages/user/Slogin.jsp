@@ -6,15 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String basePath =request.getScheme()
-            + "://"
-            + request.getServerName()
-            + ":"
-            + request.getServerPort()
-            + request.getContextPath()
-            +"/";
-%>
+<%--<%--%>
+<%--    String basePath =request.getScheme()--%>
+<%--            + "://"--%>
+<%--            + request.getServerName()--%>
+<%--            + ":"--%>
+<%--            + request.getServerPort()--%>
+<%--            + request.getContextPath()--%>
+<%--            +"/";--%>
+<%--%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +87,7 @@
                     </span>
                 </div>
                 <div class="form">
-                    <form action="suserServlet" method="post">
+                    <form action="/suserServlet" method="post">
                         <input type="hidden" name="action" value="login" />
                         <label>用户名称：</label>
                         <input class="itxt" type="text" placeholder="请输入用户名" autocomplete="off"

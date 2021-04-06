@@ -15,28 +15,39 @@ public class SUserServlet extends BaseServlet{
     /**
      * 处理登陆的功能
      *
-     * @param req
-     * @param resp
+     * @param request
+     * @param response
      * @throws ServletException
      * @throws IOException
      */
-    protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 1、获取请求的参数
-        String username=req.getParameter("username");
-        String password=req.getParameter("password");
-        SUser loginUser =  sUserService.login(new SUser(null,username,password,null,null,null,null,1));
-        if (loginUser == null){
-            req.setAttribute("msg","用户名或密码错误");
-            req.setAttribute("username",username);
-            req.getRequestDispatcher("/pages/user/Slogin.jsp").forward(req,resp);
-        }else {
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
 
-            req.getSession().setAttribute("suser", loginUser);
-            req.getSession().setAttribute("address",loginUser.getAddress());
-            req.getRequestDispatcher("/pages/user/Slogin_success.jsp").forward(req,resp);
+        SUser loginUser =  sUserService.login(new SUser(null,username,password,null,null,null,null,null));
+        Integer role=loginUser.getRole();
+        if (loginUser == null){
+            request.setAttribute("msg","用户名或密码错误！");
+            request.setAttribute("username",username);
+            request.getRequestDispatcher("/pages/user/Slogin.jsp").forward(request,response);
         }
+        else {
+            if (role !=1)
+            {
+                request.setAttribute("msg","此用户不是商家用户！请重试！");
+                request.setAttribute("username",username);
+                request.getRequestDispatcher("/pages/user/Slogin.jsp").forward(request,response);
+            }else {
+                request.getSession().setAttribute("suser",loginUser);
+                request.getSession().setAttribute("userType",1);
+                request.getRequestDispatcher("/pages/user/Slogin_success.jsp").forward(request,response);
+            }
+            }
+
 
     }
+
 
 
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

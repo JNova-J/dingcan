@@ -56,7 +56,7 @@
         </tr>
 
 
-
+<c:if test="${not empty requestScope.page}">
         <c:forEach items="${requestScope.page.items}" var="food">
             <tr>
                 <td>${food.name}</td>
@@ -69,7 +69,10 @@
                 <td><a class="deleteClass" href="manage/foodServlet?action=delete&id=${food.id}&pageNo=${requestScope.page.pageNo}">删除</a></td>
             </tr>
         </c:forEach>
-
+</c:if>
+        <c:if test="${empty requestScope.page}">
+            <td colspan="4"><a href="/pages/manager/food_edit.jsp">当前没有菜单信息，过去添加界面进行添加吧！</a></td>
+        </c:if>
         <tr>
             <td></td>
             <td></td>
